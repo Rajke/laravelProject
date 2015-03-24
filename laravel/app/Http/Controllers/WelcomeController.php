@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-
+use App\Item;
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +30,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
-	}
+		return view('welcome', ['items' =>Item::all()]);
+	} 
 
+	public function show($id)
+		{
+			$item = Item::find($id);
+			return view('items.item', ['item' => $item]);
+		}
 }

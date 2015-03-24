@@ -51,7 +51,9 @@ class TODOController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$item = Item::find($id);
+		return view('item',['item'=>$item]);
+
 	}
 
 	/**

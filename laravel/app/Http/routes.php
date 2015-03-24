@@ -10,15 +10,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'WelcomeController@index');
+
+Route::get('home', 'HomeController@index');
 
 
-Route::get('item', ['as' => 'item.index', 'uses' => 'TODOController@index']);
-Route::get('item/create', ['as' => 'item.create', 'uses' => 'TODOController@create']);
-Route::post('item/store', ['as' => 'item.store', 'uses' => 'TODOController@store']);
-Route::delete('item/{item}/destroy', ['as' => 'item.destroy', 'uses' => 'TODOController@destroy']);
-Route::get('item/{item}/edit', ['as' => 'item.edit', 'uses' => 'TODOController@edit']);
-Route::put('item/{item}', ['as' => 'item.update', 'uses' => 'TODOController@update']);
+Route::resource('item', 'TODOController');
+// Route::get('item', ['as' => 'item.index', 'uses' => 'TODOController@index']);
+// Route::get('item/create', ['as' => 'item.create', 'uses' => 'TODOController@create']);
+// Route::post('item/store', ['as' => 'item.store', 'uses' => 'TODOController@store']);
+// Route::delete('item/{item}/destroy', ['as' => 'item.destroy', 'uses' => 'TODOController@destroy']);
+// Route::get('item/{item}/edit', ['as' => 'item.edit', 'uses' => 'TODOController@edit']);
+// Route::put('item/{item}', ['as' => 'item.update', 'uses' => 'TODOController@update']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
