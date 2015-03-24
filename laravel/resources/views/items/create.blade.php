@@ -1,7 +1,9 @@
 @extends('app')
 @section('content')
+	<a href="{{ route('item.index') }}" class="btn btn-primary">BACK</a>	
 	{!! Form::open(['route' => 'item.store']) !!}
 	<div class="form-group">
+	<br/>
 		{!! Form::label('title','Title') !!}<br/>
 		{!! Form::text('title',null,['class'=>'form-control','class'=>'col-md-6']) !!}
 	</div><br/>
@@ -14,8 +16,7 @@
 		{!! Form::checkBox('status',null,['class'=>'form-control']) !!}
 	</div>
 	<div class="form-group">
-		{!! Form::submit('Add',null,['class'=>'form-control']) !!}
-		<a href="{{ route('item.index') }}" class="btn btn-default">Home</a>
+		{!! Form::submit('Add',['class'=>'btn btn-success' ]) !!}
 	</div>
 	{!! Form::close() !!}
 @endsection
