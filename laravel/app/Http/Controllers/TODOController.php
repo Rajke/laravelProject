@@ -16,7 +16,8 @@ class TODOController extends Controller {
 	 */
 	public function index() 
 	{
-		return view('items.index', [ 'items' => Auth::user()->items]);
+		return view('items.index',['items' => Auth::user()->items]);
+		//return Item::all();
 	}
 
 	/**
@@ -99,5 +100,13 @@ class TODOController extends Controller {
 		return redirect()->route('item.index');
 	}
 
+		function ajaxItems()
+	{
+		return view('ajax-items');
+	}
 
+	function json()
+	{
+		return Item::all();
+	}
 }

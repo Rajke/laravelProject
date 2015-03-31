@@ -39,12 +39,21 @@
 	</head>
 	<body>
 	<div class="table-responsive"><br/>
-	<table class="table-striped table-hover table" >
-	 <tr class="info">
+	<table style="width:100%" >	
+	 <tr class="info" >
+            <th>Username</th>
             <th>Title</th>
+            <th>Time of creation</th>
           </tr>
 	@foreach($items as $item)
+
+	
+	
 		<tr >
+		<td class="info">
+			{{ $item->user->name }}
+		</td>
+		
 		<td>
 			<p>
 			<a href="{{ route('item.show',$item->id) }}">{{ $item->title }}</a>
@@ -53,6 +62,7 @@
 		<td>
 			{{ $item->created_at->format('F d, Y h:ia') }} 
 		</td>
+		</tr>
 	@endforeach
 </table>
 	</div>

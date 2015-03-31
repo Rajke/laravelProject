@@ -14,8 +14,12 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-
 Route::resource('item', 'TODOController');
+
+Route::get('ajax-items', 'TODOController@ajaxItems');
+
+Route::get('json', 'TODOController@json');
+
 // Route::get('item', ['as' => 'item.index', 'uses' => 'TODOController@index']);
 // Route::get('item/create', ['as' => 'item.create', 'uses' => 'TODOController@create']);
 // Route::post('item/store', ['as' => 'item.store', 'uses' => 'TODOController@store']);
