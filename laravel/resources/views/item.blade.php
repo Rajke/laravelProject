@@ -30,4 +30,10 @@
 		</td>
 		</tr>
 		</table>
+		<table border=1>
+				<tr>
+					<td id="hide">dsadas</td>
+					<input type="text" id="show" style="display: none;">
+				</tr>
+			</table>	
 @endsection

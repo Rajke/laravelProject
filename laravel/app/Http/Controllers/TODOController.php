@@ -6,6 +6,7 @@ use Auth;
 use App\Item;
 use App\User;
 use Request;
+use Input;
 
 class TODOController extends Controller {
 
@@ -16,7 +17,7 @@ class TODOController extends Controller {
 	 */
 	public function index() 
 	{
-		return view('items.index',['items' => Auth::user()->items]);
+		return view('items.index',['items' => Auth::user()->items, 'user'=>Auth::user()]);
 		//return Item::all();
 	}
 
@@ -100,7 +101,7 @@ class TODOController extends Controller {
 		return redirect()->route('item.index');
 	}
 
-		function ajaxItems()
+	function ajaxItems()
 	{
 		return view('ajax-items');
 	}
@@ -108,5 +109,32 @@ class TODOController extends Controller {
 	function json()
 	{
 		return Item::all();
+	}
+
+	function ajaxPost()
+	{
+		$inputs = Input::all();
+
+		if(Request::ajax()){
+
+    	$inputs['user_id'] = Auth::user()->id;
+    	$item = Item::create($inputs);
+        }
+
+        return $item;
+        Redirect::back();
+	}
+
+
+	function ajaxDelete($id){	
+		
+		$item = Item::findOrFail($id);
+
+		if(Request::ajax())
+		{
+			$item->delete();
+		}
+		
+		return $item;
 	}
 }

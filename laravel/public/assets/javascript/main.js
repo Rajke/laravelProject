@@ -11,7 +11,7 @@
 
     //alert(5 + 6);
 
-    document.write(5+5+" Noob");
+    //document.write(5+5+" Noob");
 
     /*document.getElementById("demo").innerHTML = 5 + 6;
 
@@ -21,13 +21,12 @@
     document.getElementById("demo").innerHTML = z;*/
 
 
-    function date() {
-        document.getElementById("demo").innerHTML = Date();
-
     function myFunction() {
-    }
+    
         document.getElementById("demo2").innerHTML = Math.random()*10;
     }
+
+
     //////
 
     function poz() {
@@ -88,9 +87,9 @@
     //jQuery
 
     $(document).ready(function(){
-        $("p").click(function(){
-            $(this).empty();
-        });
+        // $("p").click(function(){
+        //     $(this).empty();
+        // });
 
         $(".js-try-it").click(function(){
             $("#demo").html(myFunction);
@@ -105,7 +104,7 @@
         });
 
         $(window).load(function(){
-            $('#demo3').html(date);
+            $('#demo3').html(Date());
             $('#dani').html(dani);
         });
 
@@ -113,15 +112,73 @@
             $('#imeShow').html(forma);
         });
 
-        // $( "p" ).click(function() {
-        //     $( this ).slideUp();
-        // });
+        $('body').on('dblclick','.js-edit', function(evt){
+            var $obj = $(this);
+            var idItema = $obj.data("id-itema");
+            console.log(idItema);
+            var tekst = $obj.html().trim();
+            $obj.html('<input type="text" size="30" data-id-itema="' + idItema + '" id="tekst' + idItema + '"> '); 
+            //console.log(tekst);
+            $("#tekst"+idItema).val(tekst);               
+        });
+
+        $('#nov').on('click',function(){
+            $('#inputi').html('<label> Title </label><input type="text" size="30" id="title"></input><label> Description </label> <textarea id="desc"></textarea><button id="dodaj" class="btn btn-primary">Dodaj</button><button id="sakrij" class="btn btn-danger">Hide</button>');
+            $('#sakrij').click(function()
+        {
+            $('#inputi').html('');
+        })
+           $('#dodaj').on('click', function(){
+
+                        var $post = {};
+                        $post.title = $('#title').val();
+                        $post.description = $('#desc').val();
+                        $post._token = window._laravel_token;
+                        console.log($post);
+                    
+                    $.ajax({
+
+                        type: "POST",
+                        url: 'http://test.dev/ajax-Post',
+                        data: $post,
+                        success: function(data){
+                            $('#inputi').html('');
+                            var user = window._laravel_user.name;
+                            var noviRed = $("<tr></tr>");
+                            noviRed.append('<td class="info">'+user+'</td>')
+                            noviRed.append('<td>'+data.title+'</td>');
+                            noviRed.append('<td>'+data.description+'</td>');
+                            noviRed.append('<td>'+data.created_at+'</td>');
+                            noviRed.append('<button id="obrisi" class="btn btn-default">Obrisi</button>'); 
+                            // var noviRed = $('<tr></tr>');
+                            // noviRed.append('<td>'+data.title+'</td>');
+                            $('table').append(noviRed);
+                        }
+
+                    });
+                });
+        });
+
+
     });
 
     //vezba
 
     //$('h2').hide();
 $(document).on('ready', function(){
+
+         $('.brisi').on('click',function(event){
+            var id = $(this).data('id-itema');
+            var token = $(this).data('token');
+            $.ajax({
+                url:'http://test.dev/ajax-Delete/'+id,
+                type: 'delete',
+                data: {_method: 'delete', _token :token},
+                success: function (data){
+                        console.log(data)     
+                        }   
+            });
+        });
         //var foo = 3;
         // window.foo = 3;
         $('button#callapi').on('click', function(event){
@@ -142,14 +199,12 @@ $(document).on('ready', function(){
                 });
             });
         }); 
-
-
+    
+    
 })();
+    
 
 
-
-
-//js laboratorija
 
     function Laboratorija(naziv, ulica){
         this.naziv = naziv;
@@ -178,7 +233,7 @@ $(document).on('ready', function(){
     }
 
     Laborant.prototype.ispis = function(){
-            alert(laborant.ime);
+            document.write(laborant.ime);
     }
 
     lab = new Laboratorija('Metlab', 'Masala Tita 5');
@@ -187,7 +242,7 @@ $(document).on('ready', function(){
     laborant=new Laborant('pero','smit','dr mr',lab);
     console.info(laborant);
 
-    laborant.ispis();
+    //laborant.ispis();
 
 
 

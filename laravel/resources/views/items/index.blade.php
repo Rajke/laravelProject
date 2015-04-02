@@ -11,31 +11,41 @@
           </tr>
 	@foreach($items as $item)
 		<tr >
-		<td class="info">
+		<td class="info" >
 			{{ $item->user->name }}
 		</td>
 		
-		<td>
-			<p>
+		<td class="js-edit" data-id-itema="{{$item->id}}">					
+			
 			{{ $item->title }}
-			</p>
+			
 		</td>
 
-		<td>
-			<p>
+		<td  class="js-edit" data-id-itema="{{$item->id}}">
+			
 				{{ $item->description }}
-			</p>
+			
 		</td>
 		<td>
-			{{ $item->created_at->format('F d, Y h:ia') }} 
+			{{ $item->created_at}} 
 		</td>
 			<td><a href="{{ route('item.edit', $item->id) }}" class="btn btn-primary">EDIT</a></td>
 			<td>{!! Form::open(['route' => ['item.destroy', $item->id], 'method' => 'DELETE']) !!}
 			{!! Form::submit('DELETE', ['class' => 'btn btn-danger']) !!}
 			{!! Form::close() !!}
 			</td>
+			<td><button class="brisi ,btn btn-danger" data-id-itema="{{$item->id}}" data-token="{{ csrf_token() }}">Delete AJAX</button></td>
 			</tr>
 	@endforeach
 </table>
 	</div>
+	<button id="nov" class="btn btn-success">Add new(2)</button>
+	<div id="inputi" form-group>
+	</div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/main.js"></script>
+	<script type="text/javascript">
+       window._laravel_token = "{{{ csrf_token() }}}";
+       window._laravel_user = {!! $user->toJson() !!}; 
+   </script> 
 @endsection

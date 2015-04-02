@@ -28,10 +28,15 @@
 
 		<div id="dani">
 		</div>
-
+		
 		<form name="nForma" action="" onsubmit="return forma()" method="post"><input type="text" id="ime" value="" required>
 		</form>
-		
+		<table border=1>
+				<tr>
+					<td id="hide">dsadas</td>
+					<input type="text" id="show" style="display: none;">
+				</tr>
+			</table>	
 		<button class="buton">Buton prikazi</button>
 
 		<div id="imeShow">
