@@ -24,6 +24,10 @@ Route::post('ajax-Post','TODOController@ajaxPost');
 
 Route::delete('ajax-Delete/{item}', 'TODOController@ajaxDelete');
 
+Route::put('ajax-Update/{item}','TODOController@ajaxUpdate');
+
+Route::get('galerija','TODOController@galerija');
+
 // Route::get('item', ['as' => 'item.index', 'uses' => 'TODOController@index']);
 // Route::get('item/create', ['as' => 'item.create', 'uses' => 'TODOController@create']);
 // Route::post('item/store', ['as' => 'item.store', 'uses' => 'TODOController@store']);

@@ -3,39 +3,39 @@
 	<a href="{{ route('item.create') }}" class="btn btn-success">Add new item</a>
 	<div class="table-responsive"><br/>
 	<table style="width:100%" class="table-striped table-hover table" >
-	 <tr class="info">
+	 <tr >
             <th>Username</th>
             <th>Title</th>
             <th>Description</th>
             <th>Time of creation</th>
           </tr>
 	@foreach($items as $item)
-		<tr >
-		<td class="info" >
-			{{ $item->user->name }}
-		</td>
-		
-		<td class="js-edit" data-id-itema="{{$item->id}}">					
-			
-			{{ $item->title }}
-			
-		</td>
-
-		<td  class="js-edit" data-id-itema="{{$item->id}}">
-			
-				{{ $item->description }}
-			
-		</td>
-		<td>
-			{{ $item->created_at}} 
-		</td>
-			<td><a href="{{ route('item.edit', $item->id) }}" class="btn btn-primary">EDIT</a></td>
-			<td>{!! Form::open(['route' => ['item.destroy', $item->id], 'method' => 'DELETE']) !!}
-			{!! Form::submit('DELETE', ['class' => 'btn btn-danger']) !!}
-			{!! Form::close() !!}
-			</td>
-			<td><button class="brisi ,btn btn-danger" data-id-itema="{{$item->id}}" data-token="{{ csrf_token() }}">Delete AJAX</button></td>
-			</tr>
+		<div class="col-md-12">
+                            <tr data-id-itema = "{{ $item->id }}" class="js-item-row">
+                            	<td class="info" >
+                                    {{ $item->user->name }}
+                                </td>
+                                <td class="js-title" >
+                                    {{ $item->title }}
+                                </td>
+                                <td class="active js-desc"  >
+                                    {{ $item->description }}
+                                </td>
+                    
+                                <td class="js-time">
+                                    {{ $item->updated_at}}
+                                </td>
+                                
+                                <td class="btn-save"  data-id-itema = "{{ $item->id }}">
+                                </td>
+                                <td class="btn-cancel">
+                                </td>
+                                <td>
+                                    <button class="btn btn-default js-obrisi" data-id-itema="{{ $item->id }}">Obrisi</button>
+                                </td>
+                            </tr>
+                        
+                    </div>
 	@endforeach
 </table>
 	</div>

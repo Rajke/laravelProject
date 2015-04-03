@@ -137,4 +137,20 @@ class TODOController extends Controller {
 		
 		return $item;
 	}
+
+
+	function ajaxUpdate($id){
+
+		
+			$inputs = Input::all();
+		if(Request::ajax()){
+			$item = Item::find($id);
+			$item->update($inputs);
+		}
+		return $item;
+	}
+	function galerija()
+	{
+		return view('mpopup');
+	}
 }
