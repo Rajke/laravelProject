@@ -1,7 +1,21 @@
 @extends('app')
 @section('content')
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/javascript/main.js"></script>
-	<script type="text/javascript" src="dist/javascript/jquery.magnific-popup.js"></script>
-	<link rel="stylesheet" href="magnific-popup/magnific-popup.css"> 
+	<link rel="stylesheet" href="dist/magnific-popup.css"> 
+
+
+	<button id="open-popup">Open popup</button>
+
+	<div id="my-popup" class="mfp-hide white-popup">
+	  Inline popup
+	</div>
+
+
+	
+@endsection
+
+
+@section('scripts')
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/side.js"></script>
+	<script type="text/javascript" src="dist/jquery.magnific-popup.js"></script>
 @endsection

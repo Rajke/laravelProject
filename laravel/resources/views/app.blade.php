@@ -36,6 +36,7 @@
 					<li><a href="{{ url('/') }}">Home</a></li>
 					<li><a href="{{ url('/json') }}">JSON</a></li>
 					<li><a href="{{ url('/ajax-items') }}">Ajax Page</a></li>
+					<li><a href="{{ url('/galerija') }}">Galerija</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -57,8 +58,10 @@
 
 	@yield('content')
 
+	
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	@yield('scripts')
 </body>
 </html>

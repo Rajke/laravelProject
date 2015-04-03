@@ -42,9 +42,12 @@
 	<button id="nov" class="btn btn-success">Add new(2)</button>
 	<div id="inputi" form-group>
 	</div>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/javascript/main.js"></script>
-	<script type="text/javascript">
+@endsection
+
+
+@section('scripts')
+    <script type="text/javascript" src="assets/javascript/main.js"></script>
+    <script type="text/javascript">
        window._laravel_token = "{{{ csrf_token() }}}";
        window._laravel_user = {!! $user->toJson() !!}; 
    </script> 
