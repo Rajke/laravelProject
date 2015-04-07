@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +37,7 @@
 					<li><a href="{{ url('/json') }}">JSON</a></li>
 					<li><a href="{{ url('/ajax-items') }}">Ajax Page</a></li>
 					<li><a href="{{ url('/galerija') }}">Galerija</a></li>
+					<li><a href="{{ url('/angular') }}">Angular</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

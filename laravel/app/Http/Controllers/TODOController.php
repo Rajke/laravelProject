@@ -149,8 +149,14 @@ class TODOController extends Controller {
 		}
 		return $item;
 	}
+
 	function galerija()
 	{
 		return view('mpopup');
+	}
+
+	function angular()
+	{
+		return view('angular');
 	}
 }
