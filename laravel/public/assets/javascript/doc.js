@@ -5,7 +5,7 @@ angular.module('docApp', [])
       {text:'Exam 1', result:null},
       {text:'Exam 2', result:null},
       {text:'Exam 3', result:null}];
-
+      docCtrl.myVar=true;
 	docCtrl.addDoc = function() {
 	      docCtrl.res.push({text:docCtrl.docText,result:null});
 	      docCtrl.docText = '';
@@ -35,6 +35,7 @@ angular.module('docApp', [])
 			results = prompt("Enter results for: " + doc.text, doc.result);
 			        	docCtrl.res[index].result=results;
 			        	console.log(docCtrl.res);
+			        	docCtrl.myVar=false;
 	    };
 
 	    docCtrl.noResult = function(value, index)
@@ -46,4 +47,5 @@ angular.module('docApp', [])
 	    {
 	    	return  !docCtrl.noResult(value, index);
 	    }
+	     
   });

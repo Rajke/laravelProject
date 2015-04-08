@@ -33,7 +33,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/item') }}">Home</a></li>
 					<li><a href="{{ url('/json') }}">JSON</a></li>
 					<li><a href="{{ url('/ajax-items') }}">Ajax Page</a></li>
 					<li><a href="{{ url('/galerija') }}">Galerija</a></li>
