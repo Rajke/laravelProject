@@ -2,44 +2,48 @@ angular.module('docApp', [])
   .controller('docController', function() {
     var docCtrl = this;
     docCtrl.res = [
-      {text:'Exam 1'},
-      {text:'Exam 2'},
-      {text:'Exam 3'}];
+      {text:'Exam 1', result:null},
+      {text:'Exam 2', result:null},
+      {text:'Exam 3', result:null}];
 
 	docCtrl.addDoc = function() {
-	      docCtrl.res.push({text:docCtrl.docText, done:false});
+	      docCtrl.res.push({text:docCtrl.docText,result:null});
 	      docCtrl.docText = '';
 	    };
 	    //remove from res and add to finished
 
-		docCtrl.fres=[];
-	 	docCtrl.go = function(doc){
-	 		var index = docCtrl.res.indexOf(doc);
-	 		docCtrl.res.splice(index, 1);
-        results = prompt("Enter results for: " + doc.text);
-        	docCtrl.fres.push({text:doc.text+": " ,results});
-        	console.log(docCtrl.fres);
+		
+      	
+	 	// docCtrl.go = function(doc){
+	 	// 	var index = docCtrl.res.indexOf(doc);
+			// results = prompt("Enter results for: " + doc.text);
+   //      	console.log(docCtrl.fres);
        
-   		 };
+   // 		 };
 		// delete from finished
 	    docCtrl.del= function(doc)
 	    {	
-	    	var index = docCtrl.fres.indexOf(doc);
+	    	var index = docCtrl.res.indexOf(doc);
 	 		console.log(index);
-	    	docCtrl.fres.splice(index, 1);
+	    	docCtrl.res.splice(index, 1);
 	    };
 
 	    docCtrl.edit = function(doc)
 	    {	
-	    	var index = docCtrl.fres.indexOf(doc);
+	    	var index = docCtrl.res.indexOf(doc);
 	 		console.log(index);
-	    	docCtrl.fres.splice(index, 1); 
-			results = prompt("Enter results for: " + doc.text, doc.results);
-			        	docCtrl.fres.push({text:doc.text,results});
-			        	console.log(docCtrl.fres);
+			results = prompt("Enter results for: " + doc.text, doc.result);
+			        	docCtrl.res[index].result=results;
+			        	console.log(docCtrl.res);
 	    };
 
+	    docCtrl.noResult = function(value, index)
+	    {
+	    	return  value.result==null||value.result=="";
+	    }
 
+	    docCtrl.yesResult = function(value, index)
+	    {
+	    	return  !docCtrl.noResult(value, index);
+	    }
   });
-
- 
