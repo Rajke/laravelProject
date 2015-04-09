@@ -30,6 +30,14 @@ Route::get('galerija','TODOController@galerija');
 
 Route::get('angular','TODOController@angular');
 
+Route::get('ajaxAngular','TODOController@ajaxAngular');
+
+Route::delete('ajaxAngular-Delete/{item}', 'TODOController@ajaxAngularDelete');
+
+Route::post('ajaxAngular-Post', 'TODOController@ajaxAngularPost');
+
+Route::put('ajaxAngular-Put/{item}', 'TODOController@ajaxAngularPut');
+
 // Route::get('item', ['as' => 'item.index', 'uses' => 'TODOController@index']);
 // Route::get('item/create', ['as' => 'item.create', 'uses' => 'TODOController@create']);
 // Route::post('item/store', ['as' => 'item.store', 'uses' => 'TODOController@store']);

@@ -116,13 +116,12 @@ class TODOController extends Controller {
 		$inputs = Input::all();
 
 		if(Request::ajax()){
-
     	$inputs['user_id'] = Auth::user()->id;
     	$item = Item::create($inputs);
         }
 
         return $item;
-        Redirect::back();
+        
 	}
 
 
@@ -142,7 +141,8 @@ class TODOController extends Controller {
 	function ajaxUpdate($id){
 
 		
-			$inputs = Input::all();
+		$inputs = Input::all();
+
 		if(Request::ajax()){
 			$item = Item::find($id);
 			$item->update($inputs);
@@ -158,5 +158,40 @@ class TODOController extends Controller {
 	function angular()
 	{
 		return view('angular');
+	}
+
+	function ajaxAngular(){
+		return view('ajaxAngular');
+	}
+
+	function ajaxAngularDelete($id)
+	{
+		$item = Item::findOrFail($id);
+
+		
+			$item->delete();
+		
+		
+		return $item;
+	}
+
+	function ajaxAngularPost()
+	{
+		$inputs = Input::all();
+
+    	$inputs['user_id'] = Auth::user()->id;
+    	$item = Item::create($inputs);
+
+        return $item;
+        
+	}
+
+	function ajaxAngularPut($id){
+
+		$inputs = Input::all();
+
+			$item = Item::find($id);
+			$item->update($inputs);
+		return $item;
 	}
 }
