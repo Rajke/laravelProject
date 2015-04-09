@@ -19,12 +19,10 @@ angular.module('myApp', [])
                     console.log(data);
                 }).
                 error(function(){                });
-            angCtrl.delete = function(data){
-                $http.delete('/ajaxAngular-Delete/'+data.id).success(function(data){
-                	var index = angCtrl.items.indexOf(data);
-			 		console.log(index);
-			    	angCtrl.items.splice(index, 1);
-                        console.log(angCtrl.items);
+            angCtrl.delete = function(item){
+            		angCtrl.index = angCtrl.items.indexOf(item);
+                $http.delete('/ajaxAngular-Delete/'+item.id, item).success(function(data){
+			    	angCtrl.items.splice(angCtrl.index, 1);
                 });
             };
 			angCtrl.show = function(){
@@ -52,10 +50,17 @@ angular.module('myApp', [])
 
 			angCtrl.showRow = function(item){
 				item.show = true;
+				angCtrl.title = item.title;
+				angCtrl.description = item.description;
 			}
+			angCtrl.cancel = function(item){
 
+				item.title = angCtrl.title;
+				item.description = angCtrl.description;
+				item.show = false;
+			}
 			angCtrl.update = function(item){
-			
+				console.log(item.id);			
 				$http.put('/ajaxAngular-Put/'+item.id, item).success(function(data){
 					
 					console.log(data);

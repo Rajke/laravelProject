@@ -14,6 +14,7 @@
                                <td><input type="text" ng-model="item.description" ng-if="item.show"><span ng-if="!item.show">@{{ item.description}}</span></td>
                                <td>@{{ item.created_at }}</td>
                                <td><button class="btn btn-success" ng-click="angCtrl.update(item)" ng-if="item.show">Update</button></td>
+                               <td><button class="btn btn-success" ng-click="angCtrl.cancel(item)" ng-if="item.show">Cancel</button></td>
                                <td><button class="btn btn-default" ng-click="angCtrl.delete(item)">Obrisi</button></td>
                            </tr> 
                            </table>
